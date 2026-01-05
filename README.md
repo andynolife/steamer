@@ -6,3 +6,7 @@ A Simple Timer with No Extra Features
 3. `cd steamer`
 4. `make`
 5. `./steamer`
+# Why is it called a steamer?
+Simple > S
+Timer > Teamer
+= Steamer!
