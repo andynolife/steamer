@@ -19,8 +19,6 @@ void timer() {
 
 	total = hours * 3600 + minutes * 60 + seconds;
 
-//	printf("\nTimer started for %02d:%02d:%02d\n", hours, minutes, seconds);
-
 	initscr();
 	cbreak();
 	noecho();
