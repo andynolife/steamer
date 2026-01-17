@@ -1,7 +1,9 @@
-with import <nixpkgs> {};
-{
-     buildEnv = stdenv.mkDerivation {
-       name = "steamer";
-       buildInputs = [stdenv ncurses];
-     };
+{ pkgs ? import <nixpkgs> {} }:
+
+pkgs.mkShell {
+  packages = with pkgs; [
+    gcc
+    gnumake
+    ncurses
+  ];
 }
