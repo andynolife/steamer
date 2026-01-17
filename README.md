@@ -1,5 +1,4 @@
 # steamer
-![Steamer Logo](steamer-logo.png)
 A Simple Timer with No Extra Features
 # How to compile
 1. Install C Compiler, make and ncurses library
