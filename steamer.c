@@ -22,18 +22,18 @@ void timer() {
 	initscr();
 	cbreak();
 	noecho();
+	curs_set(0);
 
 	getmaxyx(stdscr, rows, cols);
 
 	len = strlen(text);
-	startx = (cols - len) / 2;
+	startx = (cols - len - 17) / 2;
 	starty = rows / 2;
 
 	while (total > 0) {
 		int h = total / 3600;
 		int m = (total % 3600) / 60;
 		int s = total % 60;
-		curs_set(0);
 
 		mvprintw(starty, startx, "%s%02d:%02d:%02d\n", text, h, m, s);
 
@@ -43,13 +43,14 @@ void timer() {
 		sleep(1);
 		total--;
 	}
+	curs_set(1);
 	endwin();
 	printf("Time's up!\n");
 
 }
 
 int main() {
-	printf("Welcome to steamer 1.0!\n");
+	printf("Welcome to steamer 1.1!\n");
 	timer();
 	return 0;
 }
