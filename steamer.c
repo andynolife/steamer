@@ -56,10 +56,10 @@ void timer(int hours, int minutes, int seconds) {
 }
 
 int main() {
-        int a, b, c;
+    int a, b, c;
 	printf("Welcome to steamer 1.2!\n");
 
-        printf("Hours: ");
+    printf("Hours: ");
 	scanf("%d", &a);
 	printf("Minutes: ");
 	scanf("%d", &b);
