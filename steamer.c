@@ -3,19 +3,14 @@
 #include <unistd.h>
 #include <ncurses.h>
 #include <string.h>
+#include <stdlib.h>
 
-void timer() {
-	int hours, minutes, seconds, total;
+void timer(int hours, int minutes, int seconds) {
+	int total;
 	char *text = "Time remaining: ";
 	int rows, cols;
 	int len, startx, starty;
-
-	printf("Hours: ");
-	scanf("%d", &hours);
-	printf("Minutes: ");
-	scanf("%d", &minutes);
-	printf("Seconds: ");
-	scanf("%d", &seconds);
+        int ch;
 
 	total = hours * 3600 + minutes * 60 + seconds;
 
@@ -23,6 +18,7 @@ void timer() {
 	cbreak();
 	noecho();
 	curs_set(0);
+        nodelay(stdscr, TRUE);
 
 	getmaxyx(stdscr, rows, cols);
 
@@ -37,20 +33,38 @@ void timer() {
 
 		mvprintw(starty, startx, "%s%02d:%02d:%02d\n", text, h, m, s);
 
-		mvprintw(starty + 2, (cols - strlen("CTRL+C to exit")) / 2, "CTRL+C to exit");
+		mvprintw(starty + 2, (cols - strlen("Press 'q' to exit")) / 2, "Press 'q' to exit");
 		refresh();
 
 		sleep(1);
 		total--;
+                ch = getch();
+                if (ch == 'q') {
+                  curs_set(1);
+                  endwin();
+                  exit(EXIT_SUCCESS);
+                }
+                if (ch == ERR) {
+                  refresh();
+                  napms(100);
+                }
 	}
 	curs_set(1);
 	endwin();
-	printf("Time's up!\n");
+	printf("\nTime's up!\n");
 
 }
 
 int main() {
-	printf("Welcome to steamer 1.1!\n");
-	timer();
+        int a, b, c;
+	printf("Welcome to steamer 1.2!\n");
+
+        printf("Hours: ");
+	scanf("%d", &a);
+	printf("Minutes: ");
+	scanf("%d", &b);
+	printf("Seconds: ");
+	scanf("%d", &c);
+	timer(a, b, c);
 	return 0;
 }

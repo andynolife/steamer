@@ -5,7 +5,7 @@ SRCS = steamer.c
 OBJS = $(SRCS:.c=.o)
 
 CC = gcc
-CFLAGS = -Wall -g -lncurses
+CFLAGS = -Wall -g -lncurses -O2
 
 all: $(TARGET)
 
