@@ -10,7 +10,7 @@ void timer(int hours, int minutes, int seconds) {
 	char *text = "Time remaining: ";
 	int rows, cols;
 	int len, startx, starty;
-        int ch;
+    int ch;
 
 	total = hours * 3600 + minutes * 60 + seconds;
 
@@ -18,7 +18,7 @@ void timer(int hours, int minutes, int seconds) {
 	cbreak();
 	noecho();
 	curs_set(0);
-        nodelay(stdscr, TRUE);
+    nodelay(stdscr, TRUE);
 
 	getmaxyx(stdscr, rows, cols);
 
@@ -38,16 +38,16 @@ void timer(int hours, int minutes, int seconds) {
 
 		sleep(1);
 		total--;
-                ch = getch();
-                if (ch == 'q') {
-                  curs_set(1);
-                  endwin();
-                  exit(EXIT_SUCCESS);
-                }
-                if (ch == ERR) {
-                  refresh();
-                  napms(100);
-                }
+        ch = getch();
+        if (ch == 'q') {
+			curs_set(1);
+            endwin();
+            exit(EXIT_SUCCESS);
+		}
+        if (ch == ERR) {
+        	refresh();
+            napms(100);
+        }
 	}
 	curs_set(1);
 	endwin();
